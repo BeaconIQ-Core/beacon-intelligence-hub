@@ -103,7 +103,7 @@ const Navbar = () => {
               ))}
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
                 <Link to="/contact">
-                  <GlowButton variant="cyan">Get a Demo</GlowButton>
+                  <GlowButton variant="gold">Get a Demo</GlowButton>
                 </Link>
               </motion.div>
             </div>
