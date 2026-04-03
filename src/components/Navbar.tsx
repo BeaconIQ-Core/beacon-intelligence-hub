@@ -40,12 +40,7 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-brand-cyan/20 border border-brand-cyan/40 flex items-center justify-center">
-              <div className="w-3 h-3 rounded-sm bg-brand-cyan" />
-            </div>
-            <span className="font-display font-bold text-xl text-foreground tracking-tight">
-              Beacon<span className="text-brand-cyan">IQ</span>
-            </span>
+            <img src="/logo.png" alt="BeaconIQ" className="h-9 w-auto" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
