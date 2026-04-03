@@ -178,7 +178,7 @@ const Index = () => (
             <p className="text-muted-foreground mb-8 text-lg">Let's talk about your AI transformation.</p>
             <Link to="/contact">
               <GlowButton variant="gold" size="lg">
-                <span className="flex items-center gap-2">Schedule a Consultation <ArrowRight size={18} /></span>
+                <span className="flex items-center gap-2">Schedule a Call <ArrowRight size={18} /></span>
               </GlowButton>
             </Link>
           </div>
