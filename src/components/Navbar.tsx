@@ -61,7 +61,7 @@ const Navbar = () => {
 
           <div className="hidden md:block">
             <Link to="/contact">
-              <GlowButton variant="ghost" size="sm">Get a Demo</GlowButton>
+              <GlowButton variant="gold" size="sm">Get a Demo</GlowButton>
             </Link>
           </div>
 
