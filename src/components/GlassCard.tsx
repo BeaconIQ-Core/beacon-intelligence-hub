@@ -10,8 +10,8 @@ interface GlassCardProps {
 
 const GlassCard = ({ children, className = "", glowColor = "cyan", hoverLift = true }: GlassCardProps) => {
   const glowClass = glowColor === "cyan"
-    ? "hover:border-brand-cyan/30 hover:shadow-[0_0_30px_hsl(193_100%_50%/0.1)]"
-    : "hover:border-brand-gold/30 hover:shadow-[0_0_30px_hsl(40_95%_48%/0.1)]";
+    ? "hover:border-brand-cyan/30 hover:shadow-[0_0_30px_hsl(200_42%_56%/0.1)]"
+    : "hover:border-brand-gold/30 hover:shadow-[0_0_30px_hsl(38_82%_77%/0.1)]";
 
   return (
     <motion.div
