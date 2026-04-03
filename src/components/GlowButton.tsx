@@ -20,9 +20,9 @@ const GlowButton = ({ children, variant = "cyan", size = "md", onClick, classNam
   };
 
   const variants = {
-    cyan: "bg-brand-cyan text-brand-black hover:shadow-[0_0_30px_hsl(193_100%_50%/0.4)]",
-    gold: "border-2 border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black hover:shadow-[0_0_30px_hsl(40_95%_48%/0.4)]",
-    ghost: "border border-brand-cyan/30 text-brand-white hover:border-brand-cyan/60 hover:bg-brand-cyan/5 hover:shadow-[0_0_20px_hsl(193_100%_50%/0.15)]",
+    cyan: "bg-brand-cyan text-brand-white hover:shadow-[0_0_30px_hsl(200_42%_56%/0.4)]",
+    gold: "border-2 border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black hover:shadow-[0_0_30px_hsl(38_82%_77%/0.4)]",
+    ghost: "border border-brand-cyan/30 text-brand-white hover:border-brand-cyan/60 hover:bg-brand-cyan/5 hover:shadow-[0_0_20px_hsl(200_42%_56%/0.15)]",
   };
 
   return (
