@@ -40,7 +40,7 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="BeaconIQ" className="h-9 w-auto" />
+            <img src="/logo.svg" alt="BeaconIQ" className="h-9 w-auto" width={160} height={36} />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
