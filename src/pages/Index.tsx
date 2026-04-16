@@ -2,7 +2,7 @@ import { AnimatePresence, motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Brain, Handshake, FlaskConical, Cpu, ChevronDown, Play, Star, ArrowRight } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
-import ParticleBackground from "@/components/ParticleBackground";
+import AIHeroBackground from "@/components/AIHeroBackground";
 import GlowButton from "@/components/GlowButton";
 import GlassCard from "@/components/GlassCard";
 import AnimatedCounter from "@/components/AnimatedCounter";
@@ -94,7 +94,7 @@ const Index = () => {
     {/* Hero */}
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-brand-navy via-background to-background" />
-      <ParticleBackground />
+      <AIHeroBackground />
       <div className="relative z-10 container mx-auto px-6 text-center">
         <motion.div variants={stagger} initial="hidden" animate="show" className="max-w-4xl mx-auto">
           <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.95] mb-6">
