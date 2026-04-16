@@ -68,25 +68,36 @@ export const AboutContent = () => (
       </div>
     </section>
 
-    {/* Timeline */}
-    <section className="py-24">
-      <div className="container mx-auto px-6">
-        <SectionHeading title="Our Story" subtitle="Key milestones on our journey to engineering intelligence." />
-        <div className="max-w-2xl mx-auto relative">
-          <div className="absolute left-[19px] top-0 bottom-0 w-px bg-border" />
-          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="space-y-10">
-            {timeline.map((item, i) => (
-              <motion.div key={i} variants={fadeUp} className="relative pl-12">
-                <div className="absolute left-3 top-1.5 w-3 h-3 rounded-full bg-brand-cyan border-2 border-background" />
-                <span className="text-sm font-display font-semibold text-brand-cyan">{item.year}</span>
-                <h4 className="font-display font-semibold text-foreground mt-1">{item.title}</h4>
-                <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+    {/* Our Story (Timeline) - hidden per requirement
+        Intent (when enabled):
+        - Render a vertical milestone timeline driven by the `timeline[]` data above
+        - Keep layout stable with a fixed spine line + per-item markers
+        Notes:
+        - The left spine is a 1px absolute line; each milestone is offset with `pl-12`
+        - `stagger` + `fadeUp` are used for a gentle "reveal as you scroll" effect
+    */}
+    {false && (
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <SectionHeading title="Our Story" subtitle="Key milestones on our journey to engineering intelligence." />
+          <div className="max-w-2xl mx-auto relative">
+            {/* Timeline spine */}
+            <div className="absolute left-[19px] top-0 bottom-0 w-px bg-border" />
+            <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="space-y-10">
+              {timeline.map((item, i) => (
+                <motion.div key={i} variants={fadeUp} className="relative pl-12">
+                  {/* Milestone marker */}
+                  <div className="absolute left-3 top-1.5 w-3 h-3 rounded-full bg-brand-cyan border-2 border-background" />
+                  <span className="text-sm font-display font-semibold text-brand-cyan">{item.year}</span>
+                  <h4 className="font-display font-semibold text-foreground mt-1">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    )}
 
     {/* Team */}
     <section className="py-24 bg-brand-navy/20">
