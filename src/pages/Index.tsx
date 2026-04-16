@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useInView } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Brain, Handshake, FlaskConical, Cpu, ChevronDown, Play, Star, ArrowRight } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import AIHeroBackground from "@/components/AIHeroBackground";
@@ -60,6 +60,7 @@ const testimonials = [
 
 const Index = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const secondLineWords = ["Intelligent", "Adaptive", "Autonomous", "Data-Driven", "Future-Ready"];
   const [secondIdx, setSecondIdx] = useState(0);
@@ -106,9 +107,17 @@ const Index = () => {
             We design, build, and deploy AI-driven software, hardware, and intelligent systems that redefine what's possible.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/#solutions">
-              <GlowButton variant="cyan" size="lg">Explore Solutions</GlowButton>
-            </Link>
+            <GlowButton
+              variant="cyan"
+              size="lg"
+              onClick={() => {
+                navigate("/#solutions");
+                const el = document.getElementById("solutions");
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+            >
+              Explore Solutions
+            </GlowButton>
           </motion.div>
         </motion.div>
       </div>
