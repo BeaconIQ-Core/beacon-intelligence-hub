@@ -68,7 +68,7 @@ export const ContactContent = () => {
           <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="space-y-6">
             {[
               { icon: Mail, label: "Email", value: "thrive@thrivebrands.ai" },
-              { icon: Phone, label: "Contact No.", value: "7042034877" },
+              { icon: Phone, label: "Contact No.", value: "+91 7042034877" },
               { icon: MapPin, label: "Address", value: "123 Innovation Drive, San Francisco, CA 94105" },
               { icon: Clock, label: "Office Hours", value: "Mon — Fri, 9:00 AM — 6:00 PM PST" },
             ].map((item, i) => (
