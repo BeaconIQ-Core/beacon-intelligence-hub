@@ -95,3 +95,35 @@
   background: hsl(var(--brand-cyan) / 0.3);
   color: hsl(var(--brand-white));
 }
+
+@layer utilities {
+  @keyframes aurora-drift {
+    0%   { transform: translate3d(-10%, -6%, 0) scale(1) rotate(0deg); }
+    33%  { transform: translate3d(6%, -10%, 0) scale(1.05) rotate(12deg); }
+    66%  { transform: translate3d(10%, 6%, 0) scale(1.1) rotate(-10deg); }
+    100% { transform: translate3d(-10%, -6%, 0) scale(1) rotate(0deg); }
+  }
+
+  @keyframes aurora-drift-2 {
+    0%   { transform: translate3d(8%, 10%, 0) scale(1.05) rotate(0deg); }
+    50%  { transform: translate3d(-8%, 2%, 0) scale(1) rotate(-14deg); }
+    100% { transform: translate3d(8%, 10%, 0) scale(1.05) rotate(0deg); }
+  }
+
+  @keyframes scan-sweep {
+    0% { transform: translateY(-120%); opacity: 0; }
+    15% { opacity: 0.25; }
+    50% { opacity: 0.12; }
+    100% { transform: translateY(120%); opacity: 0; }
+  }
+
+  .animate-aurora {
+    animation: aurora-drift 16s ease-in-out infinite;
+  }
+  .animate-aurora-2 {
+    animation: aurora-drift-2 20s ease-in-out infinite;
+  }
+  .animate-scan-sweep {
+    animation: scan-sweep 7.5s ease-in-out infinite;
+  }
+}

@@ -76,11 +76,27 @@ const ParticleBackground = () => {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ opacity: 0.6 }}
-    />
+    <div className="absolute inset-0 pointer-events-none">
+      {/* Aurora blobs */}
+      <div className="absolute -top-24 -left-24 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-35 mix-blend-screen animate-aurora bg-[radial-gradient(circle_at_30%_30%,hsl(var(--brand-cyan)/0.55),transparent_60%)]" />
+      <div className="absolute -bottom-32 -right-32 w-[44rem] h-[44rem] rounded-full blur-3xl opacity-30 mix-blend-screen animate-aurora-2 bg-[radial-gradient(circle_at_40%_40%,hsl(var(--brand-gold)/0.45),transparent_62%)]" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[50rem] h-[28rem] rounded-full blur-3xl opacity-20 mix-blend-screen animate-aurora bg-[radial-gradient(circle_at_50%_50%,hsl(var(--brand-cyan)/0.35),transparent_65%)]" />
+
+      {/* Subtle grid texture */}
+      <div className="absolute inset-0 opacity-[0.10] [background-image:linear-gradient(to_right,hsl(var(--brand-cyan)/0.25)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--brand-cyan)/0.22)_1px,transparent_1px)] [background-size:56px_56px]" />
+
+      {/* Scan sweep */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute left-0 right-0 h-40 animate-scan-sweep bg-gradient-to-b from-transparent via-brand-cyan/20 to-transparent blur-md" />
+      </div>
+
+      {/* Particles layer */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+        style={{ opacity: 0.55 }}
+      />
+    </div>
   );
 };
 
