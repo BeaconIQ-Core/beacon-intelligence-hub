@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Brain, Handshake, FlaskConical, Cpu, ChevronDown, Play, Star, ArrowRight } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
@@ -7,6 +7,31 @@ import GlowButton from "@/components/GlowButton";
 import GlassCard from "@/components/GlassCard";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import SectionHeading from "@/components/SectionHeading";
+import { AboutContent } from "./About";
+import { ServicesContent } from "./Services";
+import { SolutionsContent } from "./Solutions";
+import { ResearchContent } from "./Research";
+import { ContactContent } from "./Contact";
+import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
+
+const SectionTransition = ({ id, children }: { id: string; children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const inView = useInView(ref, { amount: 0.25 });
+
+  return (
+    <motion.div
+      ref={ref}
+      id={id}
+      className="scroll-mt-28"
+      initial={false}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const stagger = {
   hidden: {},
@@ -33,8 +58,39 @@ const testimonials = [
   { quote: "The edge AI hardware they designed for our logistics fleet is nothing short of revolutionary.", name: "Aisha Patel", company: "LogiSmart", rating: 5 },
 ];
 
-const Index = () => (
-  <PageTransition>
+const Index = () => {
+  const location = useLocation();
+
+  const secondLineWords = ["Intelligent", "Adaptive", "Autonomous", "Data-Driven", "Future-Ready"];
+  const [secondIdx, setSecondIdx] = useState(0);
+
+  useEffect(() => {
+    const t = window.setInterval(() => {
+      setSecondIdx((i) => (i + 1) % secondLineWords.length);
+    }, 2200);
+    return () => window.clearInterval(t);
+  }, []);
+
+  useEffect(() => {
+    const id = location.hash?.replace("#", "");
+    if (!id) {
+      // When hash is cleared (e.g. /#about -> /), return to top.
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      return;
+    }
+
+    const scroll = () => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    // Wait for layout/animations so scroll lands correctly.
+    requestAnimationFrame(() => requestAnimationFrame(scroll));
+  }, [location.hash]);
+
+  return (
+    <PageTransition>
     {/* Hero */}
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-brand-navy via-background to-background" />
@@ -50,12 +106,9 @@ const Index = () => (
             We design, build, and deploy AI-driven software, hardware, and intelligent systems that redefine what's possible.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/solutions">
+            <Link to="/#solutions">
               <GlowButton variant="cyan" size="lg">Explore Solutions</GlowButton>
             </Link>
-            <GlowButton variant="ghost" size="lg">
-              <span className="flex items-center gap-2"><Play size={16} /> Watch Overview</span>
-            </GlowButton>
           </motion.div>
         </motion.div>
       </div>
@@ -118,7 +171,21 @@ const Index = () => (
       <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight">
-            Built Different.<br /><span className="text-gradient-cyan">Built Intelligent.</span>
+            <span className="text-gradient-cyan">Built</span>{" "}
+            <span className="inline-block align-baseline text-brand-gold">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={secondLineWords[secondIdx]}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  className="inline-block"
+                >
+                  {secondLineWords[secondIdx]}.
+                </motion.span>
+              </AnimatePresence>
+            </span>
           </h2>
         </motion.div>
         <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="space-y-6">
@@ -176,7 +243,7 @@ const Index = () => (
           <div className="relative z-10">
             <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-4">Ready to Build the Future?</h2>
             <p className="text-muted-foreground mb-8 text-lg">Let's talk about your AI transformation.</p>
-            <Link to="/contact">
+            <Link to="/#contact">
               <GlowButton variant="gold" size="lg">
                 <span className="flex items-center gap-2">Schedule a Call <ArrowRight size={18} /></span>
               </GlowButton>
@@ -185,7 +252,25 @@ const Index = () => (
         </motion.div>
       </div>
     </section>
+
+    {/* One-page sections */}
+    <SectionTransition id="about">
+      <AboutContent />
+    </SectionTransition>
+    <SectionTransition id="services">
+      <ServicesContent />
+    </SectionTransition>
+    <SectionTransition id="solutions">
+      <SolutionsContent />
+    </SectionTransition>
+    <SectionTransition id="research">
+      <ResearchContent />
+    </SectionTransition>
+    <SectionTransition id="contact">
+      <ContactContent />
+    </SectionTransition>
   </PageTransition>
-);
+  );
+};
 
 export default Index;

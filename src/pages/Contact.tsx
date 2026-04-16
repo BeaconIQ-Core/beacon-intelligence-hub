@@ -5,7 +5,7 @@ import PageTransition from "@/components/PageTransition";
 import GlassCard from "@/components/GlassCard";
 import GlowButton from "@/components/GlowButton";
 
-const Contact = () => {
+export const ContactContent = () => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", company: "", service: "", message: "" });
 
@@ -17,7 +17,7 @@ const Contact = () => {
   const inputClass = "w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:border-brand-cyan/50 focus:ring-1 focus:ring-brand-cyan/20 transition-all";
 
   return (
-    <PageTransition>
+    <>
       {/* Hero */}
       <section className="pt-32 pb-16 text-center">
         <div className="container mx-auto px-6">
@@ -92,8 +92,14 @@ const Contact = () => {
           </motion.div>
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 };
+
+const Contact = () => (
+  <PageTransition>
+    <ContactContent />
+  </PageTransition>
+);
 
 export default Contact;

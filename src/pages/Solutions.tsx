@@ -26,8 +26,8 @@ const products = [
 
 const logos = ["AWS", "Azure", "GCP", "Python", "TensorFlow", "NVIDIA", "PyTorch", "Docker"];
 
-const Solutions = () => (
-  <PageTransition>
+export const SolutionsContent = () => (
+  <>
     {/* Hero */}
     <section className="pt-32 pb-20 text-center">
       <div className="container mx-auto px-6">
@@ -100,6 +100,12 @@ const Solutions = () => (
         </div>
       </div>
     </section>
+  </>
+);
+
+const Solutions = () => (
+  <PageTransition>
+    <SolutionsContent />
   </PageTransition>
 );
 

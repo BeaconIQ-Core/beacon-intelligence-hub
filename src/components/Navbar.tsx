@@ -5,18 +5,19 @@ import { Menu, X } from "lucide-react";
 import GlowButton from "./GlowButton";
 
 const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Services", path: "/services" },
-  { name: "Solutions", path: "/solutions" },
-  { name: "Research", path: "/research" },
-  { name: "Contact", path: "/contact" },
+  { name: "Home", to: "/", hash: "" },
+  { name: "About", to: "/#about", hash: "#about" },
+  { name: "Services", to: "/#services", hash: "#services" },
+  { name: "Solutions", to: "/#solutions", hash: "#solutions" },
+  { name: "Research", to: "/#research", hash: "#research" },
+  { name: "Contact", to: "/#contact", hash: "#contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const isOnHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -25,6 +26,16 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => setMobileOpen(false), [location]);
+
+  const isActive = (hash: string) => {
+    if (!isOnHome) return false;
+    if (!hash) return !location.hash;
+    return location.hash === hash;
+  };
+
+  const scrollHomeTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -35,21 +46,22 @@ const Navbar = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
             ? "py-3 glass-strong shadow-lg shadow-brand-black/50"
-            : "py-5 bg-transparent"
+            : "py-5 bg-background/35 backdrop-blur-md border-b border-border/40"
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.svg" alt="BeaconIQ" className="h-9 w-auto" width={160} height={36} />
+            <img src="/beaconiq_logo_dark.png" alt="BeaconIQ" className="h-9 w-auto" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
-                key={link.path}
-                to={link.path}
+                key={link.to}
+                to={link.to}
+                onClick={link.hash ? undefined : scrollHomeTop}
                 className={`text-sm font-body transition-colors duration-300 ${
-                  location.pathname === link.path
+                  isActive(link.hash)
                     ? "text-brand-cyan"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
@@ -60,7 +72,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:block">
-            <Link to="/contact">
+            <Link to="/#contact">
               <GlowButton variant="gold" size="sm">Get a Demo</GlowButton>
             </Link>
           </div>
@@ -86,15 +98,16 @@ const Navbar = () => {
             <div className="flex flex-col items-center gap-6 p-8">
               {navLinks.map((link, i) => (
                 <motion.div
-                  key={link.path}
+                  key={link.to}
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.08 }}
                 >
                   <Link
-                    to={link.path}
+                    to={link.to}
+                    onClick={link.hash ? undefined : scrollHomeTop}
                     className={`text-2xl font-display font-semibold ${
-                      location.pathname === link.path ? "text-brand-cyan" : "text-foreground"
+                      isActive(link.hash) ? "text-brand-cyan" : "text-foreground"
                     }`}
                   >
                     {link.name}
@@ -102,7 +115,7 @@ const Navbar = () => {
                 </motion.div>
               ))}
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                <Link to="/contact">
+                <Link to="/#contact">
                   <GlowButton variant="gold">Get a Demo</GlowButton>
                 </Link>
               </motion.div>

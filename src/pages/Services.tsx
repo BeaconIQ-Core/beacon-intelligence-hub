@@ -34,8 +34,8 @@ const services = [
 
 const steps = ["Discovery", "Strategy", "Design", "Build", "Deploy & Scale"];
 
-const Services = () => (
-  <PageTransition>
+export const ServicesContent = () => (
+  <>
     {/* Hero */}
     <section className="pt-32 pb-20 text-center">
       <div className="container mx-auto px-6">
@@ -109,6 +109,12 @@ const Services = () => (
         <Link to="/contact"><GlowButton variant="cyan" size="lg">Get In Touch</GlowButton></Link>
       </div>
     </section>
+  </>
+);
+
+const Services = () => (
+  <PageTransition>
+    <ServicesContent />
   </PageTransition>
 );
 

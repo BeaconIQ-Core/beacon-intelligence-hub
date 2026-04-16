@@ -22,8 +22,8 @@ const publications = [
   { category: "Edge AI", title: "Neural Architecture Search for Ultra-Low Power Edge Devices", date: "November 2023", excerpt: "Automated discovery of efficient architectures targeting sub-milliwatt inference on microcontrollers." },
 ];
 
-const Research = () => (
-  <PageTransition>
+export const ResearchContent = () => (
+  <>
     {/* Hero */}
     <section className="pt-32 pb-20 text-center">
       <div className="container mx-auto px-6">
@@ -89,6 +89,12 @@ const Research = () => (
         </motion.div>
       </div>
     </section>
+  </>
+);
+
+const Research = () => (
+  <PageTransition>
+    <ResearchContent />
   </PageTransition>
 );
 
