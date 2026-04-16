@@ -392,7 +392,7 @@ const AIHeroBackground = () => {
   }, []);
 
   return (
-    <div ref={wrapRef} className="absolute inset-0 pointer-events-none cursor-none">
+    <div ref={wrapRef} className="absolute inset-0 z-0 pointer-events-none cursor-none">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
       <div
         ref={cursorRingRef}

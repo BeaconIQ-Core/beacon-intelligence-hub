@@ -168,8 +168,8 @@ const Index = () => {
     <section className="py-8 border-y border-border overflow-hidden">
       <div className="flex animate-marquee whitespace-nowrap">
         {[...marqueeItems, ...marqueeItems].map((item, i) => (
-          <span key={i} className="mx-8 text-lg font-display font-semibold text-muted-foreground/40">
-            {item} <span className="text-brand-cyan/30 mx-4">·</span>
+          <span key={i} className="mx-8 text-lg font-display font-semibold text-brand-gold/70">
+            {item} <span className="text-brand-gold/40 mx-4">·</span>
           </span>
         ))}
       </div>
@@ -179,9 +179,9 @@ const Index = () => {
     <section className="py-24">
       <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-[1.3] overflow-visible pb-3">
             <span className="text-gradient-cyan">Built</span>{" "}
-            <span className="inline-block align-baseline text-brand-gold">
+            <span className="inline-flex items-end align-baseline text-brand-gold overflow-visible pb-2">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
                   key={secondLineWords[secondIdx]}
@@ -189,7 +189,7 @@ const Index = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.35, ease: "easeInOut" }}
-                  className="inline-block"
+                  className="inline-block leading-[1.3] pb-1"
                 >
                   {secondLineWords[secondIdx]}.
                 </motion.span>
@@ -251,7 +251,7 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-brand-cyan/5 via-transparent to-brand-gold/5" />
           <div className="relative z-10">
             <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-4">Ready to Build the Future?</h2>
-            <p className="text-muted-foreground mb-8 text-lg">Let's talk about your AI transformation.</p>
+            <p className="text-brand-cyan/75 mb-8 text-lg">Let's talk about your AI transformation.</p>
             <Link to="/#contact">
               <GlowButton variant="gold" size="lg">
                 <span className="flex items-center gap-2">Schedule a Call <ArrowRight size={18} /></span>

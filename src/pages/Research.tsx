@@ -54,27 +54,29 @@ export const ResearchContent = () => (
       </div>
     </section>
 
-    {/* Publications */}
-    <section className="py-24 bg-brand-navy/20">
-      <div className="container mx-auto px-6">
-        <SectionHeading title="Latest Publications" subtitle="Insights and findings from our research team." />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {publications.map((pub, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}>
-              <GlassCard className="h-full flex flex-col">
-                <span className="text-xs font-display font-semibold text-brand-cyan bg-brand-cyan/10 px-3 py-1 rounded-full w-fit mb-4">{pub.category}</span>
-                <h3 className="font-display font-semibold text-foreground mb-2 leading-snug">{pub.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{pub.excerpt}</p>
-                <div className="flex items-center justify-between mt-6">
-                  <span className="text-xs text-muted-foreground">{pub.date}</span>
-                  <span className="text-brand-cyan text-xs font-semibold flex items-center gap-1 cursor-pointer hover:underline">Read More <ArrowRight size={12} /></span>
-                </div>
-              </GlassCard>
-            </motion.div>
-          ))}
+    {/* Latest Publications - hidden per requirement (kept for future use) */}
+    {false && (
+      <section className="py-24 bg-brand-navy/20">
+        <div className="container mx-auto px-6">
+          <SectionHeading title="Latest Publications" subtitle="Insights and findings from our research team." />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {publications.map((pub, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}>
+                <GlassCard className="h-full flex flex-col">
+                  <span className="text-xs font-display font-semibold text-brand-cyan bg-brand-cyan/10 px-3 py-1 rounded-full w-fit mb-4">{pub.category}</span>
+                  <h3 className="font-display font-semibold text-foreground mb-2 leading-snug">{pub.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">{pub.excerpt}</p>
+                  <div className="flex items-center justify-between mt-6">
+                    <span className="text-xs text-muted-foreground">{pub.date}</span>
+                    <span className="text-brand-cyan text-xs font-semibold flex items-center gap-1 cursor-pointer hover:underline">Read More <ArrowRight size={12} /></span>
+                  </div>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    )}
 
     {/* Lab CTA */}
     <section className="py-24">

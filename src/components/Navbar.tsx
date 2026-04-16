@@ -45,9 +45,9 @@ const Navbar = () => {
         transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "py-3 glass-strong shadow-lg shadow-brand-black/50"
-            : "py-5 bg-background/35 backdrop-blur-md border-b border-border/40"
-        }`}
+            ? "py-3 bg-brand-black/95 border-b border-border/60"
+            : "py-5 bg-brand-black/90 border-b border-border/50"
+        } isolate`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
@@ -62,8 +62,8 @@ const Navbar = () => {
                 onClick={link.hash ? undefined : scrollHomeTop}
                 className={`text-sm font-body transition-colors duration-300 ${
                   isActive(link.hash)
-                    ? "text-brand-cyan"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-brand-gold"
+                    : "text-brand-gold/75 hover:text-brand-gold"
                 }`}
               >
                 {link.name}
@@ -78,7 +78,7 @@ const Navbar = () => {
           </div>
 
           <button
-            className="md:hidden text-foreground"
+            className="md:hidden text-brand-gold"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -107,7 +107,7 @@ const Navbar = () => {
                     to={link.to}
                     onClick={link.hash ? undefined : scrollHomeTop}
                     className={`text-2xl font-display font-semibold ${
-                      isActive(link.hash) ? "text-brand-cyan" : "text-foreground"
+                      isActive(link.hash) ? "text-brand-gold" : "text-brand-gold/85"
                     }`}
                   >
                     {link.name}

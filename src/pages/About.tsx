@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Target, Eye, Lightbulb, Shield, Sparkles, Linkedin } from "lucide-react";
+import { Target, Eye, Lightbulb, Shield, Sparkles } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import SectionHeading from "@/components/SectionHeading";
 import GlassCard from "@/components/GlassCard";
@@ -16,13 +16,13 @@ const timeline = [
   { year: "2024", title: "12 Patents Filed", desc: "Achieved milestone of 12 AI-related patents in computer vision and NLP." },
 ];
 
-const team = [
-  { name: "Dr. Elena Vasquez", role: "CEO & Co-Founder" },
-  { name: "James Okonkwo", role: "CTO" },
-  { name: "Mei Lin Zhang", role: "VP of Research" },
-  { name: "David Kurosawa", role: "Head of Hardware" },
-  { name: "Priya Sharma", role: "Director of AI Solutions" },
-  { name: "Alex Petrov", role: "Head of Engineering" },
+const departments = [
+  { dept: "Executive Leadership", desc: "Strategy, partnerships, and delivery alignment across the organization." },
+  { dept: "Technology", desc: "Architecture, platform engineering, and scalable systems design." },
+  { dept: "Research Lab", desc: "Applied research, experimentation, and publication-backed innovation." },
+  { dept: "Hardware & Edge", desc: "Devices, sensors, and hardware-software co-design for the edge." },
+  { dept: "AI Solutions", desc: "Use-case discovery, model development, and production deployment." },
+  { dept: "Engineering", desc: "Product engineering, reliability, and end-to-end execution." },
 ];
 
 export const AboutContent = () => (
@@ -99,22 +99,19 @@ export const AboutContent = () => (
       </section>
     )}
 
-    {/* Team */}
+    {/* Departments / How We Work */}
     <section className="py-24 bg-brand-navy/20">
       <div className="container mx-auto px-6">
-        <SectionHeading title="Our Leadership" subtitle="The minds driving BeaconIQ's mission forward." />
+        <SectionHeading title="How We Work" subtitle="Teams aligned to build, deploy, and scale intelligent systems." />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {team.map((member, i) => (
+          {departments.map((d, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
               <GlassCard className="text-center group">
                 <div className="w-20 h-20 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-display font-bold text-brand-cyan">{member.name.charAt(0)}</span>
+                  <span className="text-2xl font-display font-bold text-brand-cyan">{d.dept.charAt(0)}</span>
                 </div>
-                <h4 className="font-display font-semibold text-foreground">{member.name}</h4>
-                <p className="text-sm text-muted-foreground mt-1">{member.role}</p>
-                <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Linkedin size={16} className="text-brand-cyan mx-auto" />
-                </div>
+                <h4 className="font-display font-semibold text-foreground">{d.dept}</h4>
+                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{d.desc}</p>
               </GlassCard>
             </motion.div>
           ))}
