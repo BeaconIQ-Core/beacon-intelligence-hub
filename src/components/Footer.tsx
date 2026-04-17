@@ -40,8 +40,8 @@ const Footer = () => (
         <div>
           <h4 className="font-display font-semibold text-foreground mb-4">Contact</h4>
           <div className="flex flex-col gap-2.5 text-sm text-muted-foreground">
-            <span>hello@beaconiq.ai</span>
-            <span>+1 (555) 0199</span>
+            <span>thrive@thrivebrands.ai</span>
+            <span>+91 7042034877</span>
             <span>San Francisco, CA</span>
           </div>
           <div className="flex gap-3 mt-4">
