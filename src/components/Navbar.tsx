@@ -45,8 +45,8 @@ const Navbar = () => {
         transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "py-3 bg-brand-black/95 border-b border-border/60"
-            : "py-5 bg-brand-black/90 border-b border-border/50"
+            ? "py-3 bg-brand-gold border-b border-brand-gold/60"
+            : "py-5 bg-brand-gold border-b border-brand-gold/50"
         } isolate`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
@@ -62,8 +62,8 @@ const Navbar = () => {
                 onClick={link.hash ? undefined : scrollHomeTop}
                 className={`text-sm font-body transition-colors duration-300 ${
                   isActive(link.hash)
-                    ? "text-brand-gold"
-                    : "text-brand-gold/75 hover:text-brand-gold"
+                    ? "text-brand-navy"
+                    : "text-brand-navy/80 hover:text-brand-navy"
                 }`}
               >
                 {link.name}
@@ -73,12 +73,18 @@ const Navbar = () => {
 
           <div className="hidden md:block">
             <Link to="/#contact">
-              <GlowButton variant="gold" size="sm">Get a Demo</GlowButton>
+              <GlowButton
+                variant="gold"
+                size="sm"
+                className="border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-brand-gold"
+              >
+                Get a Demo
+              </GlowButton>
             </Link>
           </div>
 
           <button
-            className="md:hidden text-brand-gold"
+            className="md:hidden text-brand-navy"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -107,7 +113,7 @@ const Navbar = () => {
                     to={link.to}
                     onClick={link.hash ? undefined : scrollHomeTop}
                     className={`text-2xl font-display font-semibold ${
-                      isActive(link.hash) ? "text-brand-gold" : "text-brand-gold/85"
+                      isActive(link.hash) ? "text-brand-navy" : "text-brand-navy/85"
                     }`}
                   >
                     {link.name}
@@ -116,7 +122,12 @@ const Navbar = () => {
               ))}
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
                 <Link to="/#contact">
-                  <GlowButton variant="gold">Get a Demo</GlowButton>
+                  <GlowButton
+                    variant="gold"
+                    className="border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-brand-gold"
+                  >
+                    Get a Demo
+                  </GlowButton>
                 </Link>
               </motion.div>
             </div>
