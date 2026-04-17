@@ -43,6 +43,8 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
+const serviceImages = ["/service1.jpeg", "/service2.jpeg", "/service3.jpeg", "/service4.jpeg"];
+
 const services = [
   { icon: Brain, title: "AI Software & Solutions", desc: "Enterprise and consumer AI applications built to scale." },
   { icon: Handshake, title: "AI Consultancy", desc: "Strategic advisory from data strategy to model deployment." },
@@ -148,6 +150,14 @@ const Index = () => {
           {services.map((s, i) => (
             <motion.div key={i} variants={fadeUp}>
               <GlassCard className="h-full group">
+                <div className="h-28 rounded-xl overflow-hidden border border-border/40 mb-5">
+                  <img
+                    src={serviceImages[i] ?? "/service1.jpeg"}
+                    alt={s.title}
+                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy"
+                  />
+                </div>
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center shrink-0 group-hover:bg-brand-cyan/20 transition-colors">
                     <s.icon size={22} className="text-brand-cyan" />

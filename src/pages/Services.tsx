@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 const fadeUp = { hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
 
+const serviceImages = ["/service1.jpeg", "/service2.jpeg", "/service3.jpeg", "/service4.jpeg"];
+
 const services = [
   {
     icon: Brain, title: "AI Software & Solutions",
@@ -74,8 +76,13 @@ export const ServicesContent = () => (
               </motion.div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: i % 2 === 0 ? 40 : -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className={i % 2 === 1 ? "lg:order-1" : ""}>
-              <GlassCard hoverLift={false} className="h-48 flex items-center justify-center">
-                <service.icon size={64} className="text-brand-cyan/20" />
+              <GlassCard hoverLift={false} className="h-60 overflow-hidden p-0">
+                <img
+                  src={serviceImages[i] ?? "/service1.jpeg"}
+                  alt={service.title}
+                  className="w-full h-full object-cover opacity-90"
+                  loading="lazy"
+                />
               </GlassCard>
             </motion.div>
           </div>

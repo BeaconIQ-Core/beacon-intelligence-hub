@@ -39,9 +39,14 @@ export const AboutContent = () => (
           </p>
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="flex justify-center">
-          <div className="w-72 h-72 rounded-full bg-gradient-to-br from-brand-cyan/20 to-brand-gold/10 border border-brand-cyan/20 flex items-center justify-center animate-float">
-            <div className="w-48 h-48 rounded-full bg-gradient-to-tr from-brand-cyan/10 to-transparent border border-brand-cyan/10 flex items-center justify-center">
-              <div className="w-24 h-24 rounded-full bg-brand-cyan/10 border border-brand-cyan/30" />
+          <div className="w-full max-w-md">
+            <div className="rounded-2xl overflow-hidden border border-brand-cyan/15 glass">
+              <img
+                src="/about.jpeg"
+                alt="About BeaconIQ"
+                className="w-full h-[320px] object-cover"
+                loading="lazy"
+              />
             </div>
           </div>
         </motion.div>
